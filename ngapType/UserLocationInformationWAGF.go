@@ -1,6 +1,6 @@
 package ngapType
 
-// Need to import "gofree5gc/lib/aper" if it uses "aper"
+// Need to import "github.com/acore2026/aper" if it uses "aper"
 
 const (
 	UserLocationInformationWAGFPresentNothing int = iota /* No components present */

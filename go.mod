@@ -21,3 +21,15 @@ require (
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace github.com/acore2026/aper => ../aper
+
+replace github.com/acore2026/nas => ../nas
+
+replace github.com/acore2026/ngap => ../ngap
+
+replace github.com/acore2026/openapi => ../openapi
+
+replace github.com/acore2026/sctp => ../sctp
+
+replace github.com/acore2026/util => ../util
