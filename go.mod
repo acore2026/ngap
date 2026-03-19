@@ -1,10 +1,10 @@
-module github.com/free5gc/ngap
+module github.com/acore2026/ngap
 
 go 1.25.5
 
 require (
-	github.com/free5gc/aper v1.1.0
-	github.com/free5gc/openapi v1.2.3
+	github.com/acore2026/aper v1.1.0
+	github.com/acore2026/openapi v1.2.3
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.9.0
 	github.com/tim-ywliu/nested-logrus-formatter v1.3.2

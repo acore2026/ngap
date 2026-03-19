@@ -4,10 +4,10 @@ import (
 	"encoding/hex"
 	"strings"
 
-	"github.com/free5gc/aper"
-	"github.com/free5gc/ngap/logger"
-	"github.com/free5gc/ngap/ngapType"
-	"github.com/free5gc/openapi/models"
+	"github.com/acore2026/aper"
+	"github.com/acore2026/ngap/logger"
+	"github.com/acore2026/ngap/ngapType"
+	"github.com/acore2026/openapi/models"
 )
 
 func TraceDataToModels(traceActivation ngapType.TraceActivation) (traceData models.TraceData) {

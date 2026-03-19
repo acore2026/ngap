@@ -3,8 +3,8 @@ package ngapConvert
 import (
 	"encoding/binary"
 
-	"github.com/free5gc/aper"
-	"github.com/free5gc/ngap/logger"
+	"github.com/acore2026/aper"
+	"github.com/acore2026/ngap/logger"
 )
 
 /*

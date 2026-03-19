@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/free5gc/aper"
-	"github.com/free5gc/ngap/ngapType"
+	"github.com/acore2026/aper"
+	"github.com/acore2026/ngap/ngapType"
 )
 
 // TS 38.412
