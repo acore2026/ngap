@@ -1,3 +1,7 @@
+github.com/acore2026/aper v1.1.1 h1:hfAaOHL4OKlekEEbXs1Syw7Cu5PVtLLc1yE83JFU5sc=
+github.com/acore2026/aper v1.1.1/go.mod h1:uq9zNLrrp/9x5OLsbtDQwln2CxhGky2KTNI4T6ljFDI=
+github.com/acore2026/openapi v1.2.4 h1:/VJ7JqSrtXYd4YLLneuaqP44GpoP68f2yjxOdwK77Vk=
+github.com/acore2026/openapi v1.2.4/go.mod h1:BkF9PK4MadF5/TijOlIllPRTzqWMCZUfqDKU1g+fHJo=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
