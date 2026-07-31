@@ -12,5 +12,6 @@ tags
 cscope.*
 # mac
 .DS_Store
+rust/target/
 
 support

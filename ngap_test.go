@@ -2,7 +2,10 @@ package ngap
 
 import (
 	"encoding/hex"
+	"os"
+	"path/filepath"
 	"reflect"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -350,11 +353,13 @@ func TestDecoder(t *testing.T) {
 	}
 }
 
-func TestCorrectAperReferenceFieldValueSetting(t *testing.T) {
-	testCases := []struct {
-		name string
-		pdu  interface{}
-	}{
+type aperRoundTripCase struct {
+	name string
+	pdu  interface{}
+}
+
+func aperReferenceFieldValueTestCases() []aperRoundTripCase {
+	return []aperRoundTripCase{
 		{
 			name: "PathSwitchRequestTransferWithAdditionalDLQosFlowPerTNLInformation",
 			pdu: ngapType.PathSwitchRequestTransfer{
@@ -473,8 +478,10 @@ func TestCorrectAperReferenceFieldValueSetting(t *testing.T) {
 			},
 		},
 	}
+}
 
-	for _, testCase := range testCases {
+func TestCorrectAperReferenceFieldValueSetting(t *testing.T) {
+	for _, testCase := range aperReferenceFieldValueTestCases() {
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 
@@ -493,4 +500,41 @@ func TestCorrectAperReferenceFieldValueSetting(t *testing.T) {
 			assert.DeepEqual(t, testCase.pdu, unmarshaledData)
 		})
 	}
+}
+
+func TestRustInteropVectors(t *testing.T) {
+	for _, name := range []string{
+		"ng_setup_request.hex",
+		"ng_setup_response.hex",
+		"amf_status_indication.hex",
+		"initial_ue_message.hex",
+		"pdu_session_resource_setup_request.hex",
+	} {
+		wire := readInteropVector(t, name)
+		pdu, err := Decoder(wire)
+		require.NoError(t, err)
+		encoded, err := Encoder(*pdu)
+		require.NoError(t, err)
+		require.Equal(t, wire, encoded)
+	}
+
+	transferFixtures := []string{
+		"path_switch_request_transfer.hex",
+		"path_switch_request_acknowledge_transfer.hex",
+	}
+	for _, testCase := range aperReferenceFieldValueTestCases() {
+		marshaledData, err := aper.MarshalWithParams(testCase.pdu, "valueExt")
+		require.NoError(t, err)
+		require.Equal(t, readInteropVector(t, transferFixtures[0]), marshaledData)
+		transferFixtures = transferFixtures[1:]
+	}
+}
+
+func readInteropVector(t *testing.T, name string) []byte {
+	t.Helper()
+	encoded, err := os.ReadFile(filepath.Join("testdata", "interop", name))
+	require.NoError(t, err)
+	wire, err := hex.DecodeString(strings.TrimSpace(string(encoded)))
+	require.NoError(t, err)
+	return wire
 }
